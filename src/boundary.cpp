@@ -35,14 +35,14 @@ namespace ISC {
         std::vector <Point2D> RectangleBoundary::vertices() const {
             return {
                     m_position,
-                    Point2D(m_position.x() + x_dim(), m_position.y()),
-                    Point2D(m_position.x() + x_dim(), m_position.y() + y_dim()),
-                    Point2D(m_position.x(), m_position.y() + y_dim())
+                    Point2D(m_position.get_x() + x_dim(), m_position.get_y()),
+                    Point2D(m_position.get_x() + x_dim(), m_position.get_y() + y_dim()),
+                    Point2D(m_position.get_x(), m_position.get_y() + y_dim())
             };
         }
 
         Point2D RectangleBoundary::center() const {
-            return Point2D(m_position.x() + x_dim() / 2, m_position.y() + y_dim() / 2);
+            return Point2D(m_position.get_x() + x_dim() / 2, m_position.get_y() + y_dim() / 2);
         }
     }
 }

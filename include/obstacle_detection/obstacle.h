@@ -1,7 +1,11 @@
-#ifndef OBSTACLE_H
-#define OBSTACLE_H
+/**
+    @author Team Yeti 2019
+    @date 2/26/2018
+*/
+#ifndef ISC_GEOMETRY_OBSTACLE_H
+#define ISC_GEOMETRY_OBSTACLE_H
 
-#include "point.h"
+#include "point2d.h"
 
 namespace ISC {
     namespace geometry {
@@ -9,7 +13,7 @@ namespace ISC {
             /**
              * Cylindrical obstacle, size represents diameter of the object
              */
-                    PILON,
+                    PYLON,
             /**
              * Near cylindrical obstacle, size represents diameter of the object
              */
@@ -46,28 +50,42 @@ namespace ISC {
                        std::vector<Point2D> interior_points);
 
             /**
+             * @brief initialized Obstacle2D constructor without interior points
+             * @param position x,y coordinate representing the position of the obstacle
+             * @param type the type of obstacle gives indicators as to how the data should be interpreted
+             * @param polygon vector
+             */
+            Obstacle2D(const Point2D &position, const ObstacleType &type, const std::vector<Point2D> &polygon);
+
+            /**
              *
              * @return Point2D object representing the coordinates of the center of the obstacle in 2D space
              */
-            Point2D position() const;
+            Point2D get_position() const;
 
             /**
              *
              * @return ObstacleType represnting the type of obstacle this object is representing
              */
-            ObstacleType type() const;
+            ObstacleType get_type() const;
 
             /**
              *
              * @return a vector of points that were scanned in that make up the obstacle
              */
-            std::vector<Point2D> interior_points() const;
+            std::vector<Point2D> get_interior_points() const;
 
             /**
              *
              * @return a double representing the size of the object. See ObstacleType to interpret this value
              */
-            double size() const;
+            double get_size() const;
+
+            /**
+             *
+             * @return a vector of points representing an obstacle as a polygon. This member is optional
+             */
+            std::vector<Point2D> get_polygon() const;
 
             /**
              *
@@ -85,7 +103,7 @@ namespace ISC {
              *
              * @param interior_points new points for the obstacle
              */
-            void set_interior_points(const std::vector<Point2D> interior_points);
+            void set_interior_points(const std::vector<Point2D> &interior_points);
 
             /**
              *
@@ -93,15 +111,21 @@ namespace ISC {
              */
             void set_type(const ObstacleType &type);
 
+            /**
+             *
+             * @param a vector of points representing an obstacle as a polygon. This member is optional
+             */
+            void set_polygon(const std::vector<Point2D> &polygon);
+
 
         private:
             Point2D m_position;
             ObstacleType m_type;
+            std::vector<Point2D> m_polygon;
             std::vector<Point2D> m_interior_points;
             double m_size;
         };
     }
 }
-
 
 #endif

@@ -1,7 +1,7 @@
-//
-// Created by aaron on 24/02/18.
-//
-
+/**
+    @author Team Yeti 2019
+    @date 2/26/2018
+*/
 #ifndef PROJECT_LIDAR_OBSTACLE_DETECTION_H
 #define PROJECT_LIDAR_OBSTACLE_DETECTION_H
 
