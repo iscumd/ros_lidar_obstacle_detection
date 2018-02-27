@@ -1,9 +1,9 @@
-//
-// Created by aaron on 24/02/18.
-//
-
-#ifndef PROJECT_POINT_H
-#define PROJECT_POINT_H
+/**
+    @author Team Yeti 2019
+    @date 2/26/2018
+*/
+#ifndef ISC_GEOMETRY_POINT_H
+#define ISC_GEOMETRY_POINT_H
 
 #include "geometry_msgs/Point.h"
 
@@ -35,12 +35,12 @@ namespace ISC {
             /**
              * @return x value of the point as a double
              */
-            double x() const;
+            double get_x() const;
 
             /**
              * @return y value of point as double
              */
-            double y() const;
+            double get_y() const;
 
             /**
              * @brief resets the x and y values to new x/y positions being passed in
@@ -66,8 +66,8 @@ namespace ISC {
          * @param threshold p1 and p2 must be within this value for them to be considered equal
          * @return true is difference between points is less than threshold. Otherwise, false
          */
-        bool close_enough(Point2D p1, Point2D p2, double threshold);
+        bool close_enough(const Point2D &p1, const Point2D &p2, const double &threshold);
     }
 }
 
-#endif //PROJECT_POINT_H
+#endif

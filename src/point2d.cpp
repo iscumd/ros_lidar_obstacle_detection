@@ -1,8 +1,8 @@
-//
-// Created by aaron on 24/02/18.
-//
-
-#include "point.h"
+/**
+    @author Team Yeti 2019
+    @date 2/26/2018
+*/
+#include "point2d.h"
 
 namespace ISC{
     namespace geometry {
@@ -18,11 +18,11 @@ namespace ISC{
             return return_point;
         }
 
-        double Point2D::x() const {
+        double Point2D::get_x() const {
             return m_x;
         }
 
-        double Point2D::y() const {
+        double Point2D::get_y() const {
             return m_y;
         }
 
@@ -31,8 +31,8 @@ namespace ISC{
             m_y = new_y_pos;
         }
 
-        bool close_enough(Point2D p1, Point2D p2, double threshold = 1e-2) {
-            return (p1.x() - p2.x() < threshold && p1.y() - p2.y() < threshold);
+        bool close_enough(const Point2D &p1, const Point2D &p2, const double &threshold = 1e-2) {
+            return (p1.get_x() - p2.get_x() < threshold && p1.get_y() - p2.get_y() < threshold);
         }
     }
 }

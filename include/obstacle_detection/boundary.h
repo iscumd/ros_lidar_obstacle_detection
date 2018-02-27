@@ -1,7 +1,7 @@
 #ifndef BOUNDARY_H
 #define BOUNDARY_H
 
-#include "point.h"
+#include "point2d.h"
 
 namespace ISC {
     namespace geometry {
