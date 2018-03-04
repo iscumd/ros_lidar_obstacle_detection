@@ -17,8 +17,15 @@ namespace ISC {
 
         lidar_obstacle_detection();
 
+        // assuming there is some sort of vector of points? just putting this here for now
+        std::vector<geometry::Point2D> lidarPoints;
+
         std::vector<geometry::Point2D> scan_boundary_filter(std::vector<geometry::Point2D> points);
         std::vector<geometry::Obstacle2D> cluster_points(std::vector<geometry::Point2D> points);
+
+        /** TODO: document things
+        */
+        std::vector<geometry::Point2D> filter_by_boundary(const RectangleBoundary& bound) const;
 
         ~lidar_obstacle_detection();
     };
