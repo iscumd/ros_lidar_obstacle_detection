@@ -25,19 +25,19 @@ namespace ISC {
              *
              * @return double representing the length of the RectangleBoundary in the x dimension
              */
-            double x_dim() const;
+            double get_x_dim() const;
 
             /**
              *
              * @return double representing the length of the RectangleBoundary in the y dimension
              */
-            double y_dim() const;
+            double get_y_dim() const;
 
             /**
              *
              * @return Point2D representing the position of the bottom left corner of the box. E.g. the -x and -y corner, third quadrant corner
              */
-            Point2D position() const;
+            Point2D get_position() const;
 
             /**
              * @brief change the position of boundary
@@ -52,13 +52,18 @@ namespace ISC {
              * These values are computed when this function is called
              * @return vector<Point2D> representing vertices of the box, counterclockwise
              */
-            std::vector<Point2D> vertices() const;
+            std::vector<Point2D> get_vertices() const;
 
             /**
              *
              * @return a Point2D object representing the center of the box; This value is computed when calling this function
              */
-            Point2D center() const;
+            Point2D get_center() const;
+
+            /**
+             * @return whether or not the point is inside the boundary.
+             */
+            bool isInside(const Point2D &point) const;
 
         private:
             Point2D m_position;
