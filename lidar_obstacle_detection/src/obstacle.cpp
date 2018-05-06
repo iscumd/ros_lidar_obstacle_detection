@@ -10,9 +10,10 @@ namespace geometry
 {
     Obstacle2D::Obstacle2D()
         : m_position( Point2D() )
-        , m_interior_points( {} )
+        , m_interior_points( { {} } )
         , m_size( 0 )
         , m_type( ObstacleType::UNKNOWN )
+        , m_polygon( { {} } )
     {
     }
 

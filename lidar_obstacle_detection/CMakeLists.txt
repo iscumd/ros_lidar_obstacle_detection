@@ -5,7 +5,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  project(lidar_obstacle_detection)
- cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
+ cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
  set(CMAKE_CXX_STANDARD 14)
 
 
@@ -41,6 +41,7 @@ set(SRC_FILES
         src/lidar_obstacle_detection.cpp
         src/obstacle.cpp
         src/point2d.cpp
+        src/cluster.cpp
         )
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

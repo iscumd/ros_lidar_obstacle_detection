@@ -47,8 +47,7 @@ namespace geometry
 
     Point2D RectangleBoundary::center() const
     {
-        return Point2D( m_position.get_x() + x_dim() / 2,
-                        m_position.get_y() + y_dim() / 2 );
+        return { m_position.get_x() + x_dim() / 2, m_position.get_y() + y_dim() / 2 };
     }
-}
-}
+}  // namespace geometry
+}  // namespace ISC

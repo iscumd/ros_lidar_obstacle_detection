@@ -54,9 +54,9 @@ namespace cluster
      * the point group.
      * @return obstacle objects representing the clustered points
      */
-    std::vector<obstacle> k_means_cluster( const std::vector<Point2D>& points,
-                                           const int& max_num_clusters,
-                                           const int& min_num_clusters );
+    std::vector<Obstacle2D> k_means_cluster( const std::vector<Point2D>& points,
+                                             const int& max_num_clusters,
+                                             const int& min_num_clusters );
 
     /**
      * @brief Cluster points using kmeans clustering
@@ -73,8 +73,8 @@ namespace cluster
      * value
      * @return obstacle objects representing the clustered points
      */
-    std::vector<obstacle> k_means_cluster( const std::vecotr<Point2D>& points,
-                                           const unsigned int& num_clusters );
+    std::vector<Obstacle2D> k_means_cluster( const std::vector<Point2D>& points,
+                                             const unsigned int& num_clusters );
 
 } /* cluster*/
 }  // ISC
