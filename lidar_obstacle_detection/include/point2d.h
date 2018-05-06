@@ -8,6 +8,8 @@
 //TODO: airfield20 This class should be templated!
 
 #include <cmath>
+#include <cfloat>
+#include <string>
 
 namespace ISC {
     namespace geometry {
