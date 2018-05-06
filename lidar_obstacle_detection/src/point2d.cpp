@@ -75,5 +75,10 @@ namespace geometry
         return std::sqrt( std::pow( p1.get_x() - p2.get_x(), 2 )
                           + std::pow( p1.get_y() - p2.get_y(), 2 ) );
     }
+
+    bool operator==( const Point2D& rhs, const Point2D& lhs )
+    {
+        return ( rhs.get_x() == lhs.get_x() ) && ( rhs.get_y() == lhs.get_y() );
+    }
 }
 }

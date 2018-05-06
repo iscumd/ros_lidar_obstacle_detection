@@ -77,6 +77,14 @@ namespace geometry
      * @return double representing the distance between the two points
      */
     double distance( const Point2D& p1, const Point2D& p2 );
+
+    /**
+    * @brief overloaded equal operator
+    * @param rhs first point to test equality to second
+    * @param lhs second point to test equality to first
+    * @return true if rhs members are equal to lhs members. Otherwise false
+    */
+    bool operator==( const Point2D& rhs, const Point2D& lhs );
 }
 }
 
