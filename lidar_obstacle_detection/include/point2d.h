@@ -5,8 +5,6 @@
 #ifndef ISC_GEOMETRY_POINT_H
 #define ISC_GEOMETRY_POINT_H
 
-#include "geometry_msgs/Point.h"
-
 //TODO: airfield20 This class should be templated!
 
 namespace ISC {
@@ -25,12 +23,6 @@ namespace ISC {
              * @param y_in double representing y coordinate
              */
             Point2D(const double &x_in, const double &y_in);
-
-            /**
-             * @brief method that constructs a geometry_msgs::Point for ros compatability
-             * @return a ros compatible point with z = 0
-             */
-            geometry_msgs::Point to_ros_point() const;
 
             /**
              * @return x value of the point as a double

@@ -3,6 +3,8 @@
 
 #include "point2d.h"
 
+#include <vector>
+
 namespace ISC {
     namespace geometry {
 

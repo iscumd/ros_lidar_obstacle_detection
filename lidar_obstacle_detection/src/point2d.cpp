@@ -10,14 +10,6 @@ namespace ISC{
 
         Point2D::Point2D(const double &x_in, const double &y_in) : m_x(x_in), m_y(y_in) {}
 
-        geometry_msgs::Point Point2D::to_ros_point() const {
-            geometry_msgs::Point return_point;
-            return_point.x = m_x;
-            return_point.y = m_y;
-            return_point.z = 0;
-            return return_point;
-        }
-
         double Point2D::get_x() const {
             return m_x;
         }
