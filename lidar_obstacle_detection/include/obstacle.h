@@ -55,7 +55,7 @@ namespace ISC {
              * @brief initialized Obstacle2D constructor without interior points
              * @param position x,y coordinate representing the position of the obstacle
              * @param type the type of obstacle gives indicators as to how the data should be interpreted
-             * @param polygon vector
+             * @param polygon vector representing the concave hull (polygon representation) of the obstacle
              */
             Obstacle2D(const Point2D &position, const ObstacleType &type, const std::vector<Point2D> &polygon);
 
