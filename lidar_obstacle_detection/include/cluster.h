@@ -14,6 +14,13 @@
 #include <time.h>
 #include <vector>
 
+// TODO: airfield20, this should be user defined. Results will be successful more often
+// with a more accurate range
+#ifndef MAX_RAND_NUM
+#define MAX_RAND_NUM 50
+#endif
+
+
 /*
  * This file contains helper functions that implement k-means clustering
  *  Target API:

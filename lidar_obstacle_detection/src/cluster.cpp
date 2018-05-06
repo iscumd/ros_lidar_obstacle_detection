@@ -6,8 +6,6 @@
 
 #include <stdexcept>
 
-#define MAX_RAND_NUM 50
-
 namespace ISC
 {
 namespace clustering
@@ -62,6 +60,7 @@ namespace clustering
                                           const int& max_num_clusters,
                                           const int& min_num_clusters )
     {
+        // TODO: airfield20 implement elbow point detection
     }
 
     std::vector<cluster> k_means_cluster( const std::vector<Point2D>& points,
