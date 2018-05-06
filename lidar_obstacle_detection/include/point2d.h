@@ -7,6 +7,8 @@
 
 //TODO: airfield20 This class should be templated!
 
+#include <cmath>
+
 namespace ISC {
     namespace geometry {
         class Point2D {
@@ -59,6 +61,14 @@ namespace ISC {
          * @return true is difference between points is less than threshold. Otherwise, false
          */
         bool close_enough(const Point2D &p1, const Point2D &p2, const double &threshold);
+
+        /**
+         * @brief distance between two points
+         * @param p1 first point
+         * @param p2 second point
+         * @return double representing the distance between the two points
+         */
+        double distance(const Point2D &p1, const Point2D &p2);
     }
 }
 

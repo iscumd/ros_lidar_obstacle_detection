@@ -11,6 +11,8 @@
 #include "obstacle.h"
 
 #include <vector>
+#include <stdlib.h>
+#include <time.h>
 
 /*
  * This file contains helper functions that implement k-means clustering
@@ -54,10 +56,10 @@ namespace ISC { namespace cluster {
      *  The algorithm is implemented according to this resource https://mubaris.com/2017/10/01/kmeans-clustering-in-python/
      *
      * @param points points to be clustered
-     * @param num_clusters the number of clusters that should be in the point group.
+     * @param num_clusters the number of clusters that should be in the point group. k value
      * @return obstacle objects representing the clustered points
      */
-    std::vector<obstacle> k_means_cluster( const std::vecotr<Point2D> & points, const int & num_clusters );
+    std::vector<obstacle> k_means_cluster( const std::vecotr<Point2D> & points, const unsigned int & num_clusters );
 
 } /* cluster*/ } //ISC
 

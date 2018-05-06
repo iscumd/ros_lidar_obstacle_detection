@@ -26,5 +26,9 @@ namespace ISC{
         bool close_enough(const Point2D &p1, const Point2D &p2, const double &threshold = 1e-2) {
             return (p1.get_x() - p2.get_x() < threshold && p1.get_y() - p2.get_y() < threshold);
         }
+
+        double distance(const Point2D &p1, const Point2D &p2){
+            return std::sqrt(std::pow(p1.get_x() - p2.get_x(), 2) + std::pow(p1.get_y() - p2.get_y(),2));
+        }
     }
 }
