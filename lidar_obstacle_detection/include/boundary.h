@@ -14,7 +14,7 @@ namespace geometry
     {
     public:
         /**
-         * @brief defaullt RectangleBoundary constructor, sets everything to zero
+         * @brief default RectangleBoundary constructor, sets everything to zero
          */
         RectangleBoundary();
 
