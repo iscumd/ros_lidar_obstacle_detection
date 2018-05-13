@@ -10,6 +10,10 @@ addons:
      - libeigen3-dev
 
 script:
- - cmake ./lidar_obstacle_detection
- - cmake --build ./lidar_obstacle_detection -- -j2
+ - cd lidar_obstacle_detection
+ - cmake -E make_directory build
+ - cmake -E chdir build cmake ..
+ - cmake --build build/ --config RelWithDebInfo --clean-first -- -j8
+ - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON build
+
 
