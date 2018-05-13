@@ -11,9 +11,6 @@ addons:
 
 script:
  - cd lidar_obstacle_detection
- - cmake -E make_directory build
- - cmake -E chdir build cmake ..
- - cmake --build build/ --config RelWithDebInfo --clean-first -- -j8
- - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON build
-
+ - ./.build.sh
+ - ./.run_tests.sh
 
