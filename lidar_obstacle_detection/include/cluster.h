@@ -69,8 +69,8 @@ namespace clustering
      * @return obstacle objects representing the clustered points
      */
     std::vector<cluster> k_means_cluster( const std::vector<Point2D>& points,
-                                          const unsigned int& max_num_clusters,
-                                          const unsigned int& min_num_clusters );
+                                          const unsigned int& min_num_clusters,
+                                          const unsigned int& max_num_clusters );
 
     /**
      * @brief Cluster points using kmeans clustering

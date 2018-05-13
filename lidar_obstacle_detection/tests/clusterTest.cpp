@@ -2,6 +2,8 @@
 // Created by aaron on 06/05/18.
 //
 
+#define MAX_RAND_NUM 25
+
 #include "cluster.h"
 
 #include "catch.hpp"
@@ -11,6 +13,20 @@ using ISC::geometry::distance;
 using ISC::clustering::k_means_cluster;
 using ISC::clustering::sum_of_squared_errors;
 
+
+TEST_CASE( "Point Cluster Test, autodetect that k = 2", "[cluster][autodetect][k=2]" )
+{
+    const int K = 2;
+    std::vector<Point2D> points
+        = { { -1, -1 }, { 1, 1 },  { 1, 0 },   { 0, 1 },  { 20, 20 },
+            { -1, 0 },  { 0, -1 }, { 21, 20 }, { 20, 19 } };
+
+    auto clusters
+        = k_means_cluster( points, 1 /*min_num_clusters*/, 3 /*max_num_clusters*/ );
+
+
+    REQUIRE( clusters.size() == K );
+}
 
 TEST_CASE( "Sum of squared Errors Test, computer calculated", "[SSE][computer]" )
 {
