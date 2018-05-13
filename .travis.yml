@@ -1,9 +1,13 @@
 dist: trusty
-sudo: true
+sudo: false
 language: cpp
 
-before-script:
- - sudo apt-get install libeigen3-dev
+addons:
+  apt:
+    sources:
+     - ubuntu-toolchain-r-test
+    packages:
+     - libeigen3-dev
 
 script:
  - cmake ./lidar_obstacle_detection
