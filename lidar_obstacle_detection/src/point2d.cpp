@@ -66,8 +66,8 @@ namespace geometry
 
     bool close_enough( const Point2D& p1, const Point2D& p2, const double& threshold )
     {
-        return ( std::abs(p1.get_x() - p2.get_x()) < threshold
-                 && std::abs(p1.get_y() - p2.get_y()) < threshold );
+        return ( std::abs( p1.get_x() - p2.get_x() ) < threshold
+                 && std::abs( p1.get_y() - p2.get_y() ) < threshold );
     }
 
     double distance( const Point2D& p1, const Point2D& p2 )

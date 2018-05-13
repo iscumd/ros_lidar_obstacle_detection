@@ -10,8 +10,13 @@
 #include "obstacle.h"
 #include "point2d.h"
 
+#include "Eigen/Core"
+#include "Eigen/Geometry"
+#include "Eigen/src/Geometry/ParametrizedLine.h"
+
 #include <stdlib.h>
 #include <time.h>
+#include <stdexcept>
 #include <vector>
 
 // TODO: airfield20, this should be user defined. Results will be successful more often
@@ -64,8 +69,8 @@ namespace clustering
      * @return obstacle objects representing the clustered points
      */
     std::vector<cluster> k_means_cluster( const std::vector<Point2D>& points,
-                                          const int& max_num_clusters,
-                                          const int& min_num_clusters );
+                                          const unsigned int& min_num_clusters,
+                                          const unsigned int& max_num_clusters );
 
     /**
      * @brief Cluster points using kmeans clustering
@@ -84,6 +89,19 @@ namespace clustering
      */
     std::vector<cluster> k_means_cluster( const std::vector<Point2D>& points,
                                           const unsigned int& num_clusters );
+
+    /**
+     * @brief calculates the sum of squared errors of the distance between a cluster's
+     * points
+     *
+     * The SSE is calculated by subtracting the mean distance between points from each
+     * distance,
+     * then calculating the sum
+     * @param points cluster for which the SSE will be calculated
+     * @return the sum of squared errors of the distance between the cluster's points
+     */
+    double sum_of_squared_errors( const cluster& points );
+
 
 }  // namespace clustering
 }  // namespace ISC
