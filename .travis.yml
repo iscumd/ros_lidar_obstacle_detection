@@ -1,0 +1,8 @@
+dist: trusty
+sudo: false
+language: cpp
+
+script:
+ - cmake ./lidar_obstacle_detection
+ - cmake --build ./lidar_obstacle_detection -- -j2
+
