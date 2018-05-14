@@ -1,0 +1,16 @@
+dist: trusty
+sudo: false
+language: cpp
+
+addons:
+  apt:
+    sources:
+     - ubuntu-toolchain-r-test
+    packages:
+     - libeigen3-dev
+
+script:
+ - cd lidar_obstacle_detection
+ - ./.build.sh
+ - ./.run_tests.sh
+

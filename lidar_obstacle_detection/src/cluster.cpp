@@ -4,7 +4,6 @@
 
 #include "cluster.h"
 
-#include <stdexcept>
 
 namespace ISC
 {
@@ -57,10 +56,63 @@ namespace clustering
     }  // namespace
 
     std::vector<cluster> k_means_cluster( const std::vector<Point2D>& points,
-                                          const int& max_num_clusters,
-                                          const int& min_num_clusters )
+                                          const unsigned int& min_num_clusters,
+                                          const unsigned int& max_num_clusters )
     {
-        // TODO: airfield20 implement elbow point detection
+        std::vector<std::vector<cluster>> cluster_groups;
+        for ( unsigned int i = min_num_clusters; i <= max_num_clusters; ++i )
+        {
+            cluster_groups.push_back( k_means_cluster( points, i ) );
+        }
+
+        // construct line from (max,sse(max)) (min,sse(min))
+        double avg_min_sse = 0;
+        for ( const auto& clus : cluster_groups.at( 0 ) )
+        {
+            if ( clus.size() > 1 )
+            {
+                avg_min_sse += sum_of_squared_errors( clus );
+            }
+        }
+        avg_min_sse        = avg_min_sse / cluster_groups.at( 0 ).size();
+        double avg_max_sse = 0;
+        for ( const auto& clus : cluster_groups.back() )
+        {
+            if ( clus.size() > 1 )
+            {
+                avg_max_sse += sum_of_squared_errors( clus );
+            }
+        }
+        avg_max_sse = avg_max_sse / cluster_groups.at( 0 ).size();
+
+        Eigen::Vector3d min( min_num_clusters, avg_min_sse, 0.0 );
+        Eigen::Vector3d max( max_num_clusters, avg_max_sse, 0.0 );
+
+        Eigen::ParametrizedLine<double, 3> line = line.Through( min, max );
+
+        double max_dist = 0;
+        int elbow_point = -1;
+        for ( unsigned int k = min_num_clusters; k <= max_num_clusters; ++k )
+        {
+            double avg_sse = 0;
+            for ( const auto& clus : cluster_groups.at( k - min_num_clusters ) )
+            {
+                if ( clus.size() > 1 )
+                {
+                    avg_sse += sum_of_squared_errors( clus );
+                }
+            }
+            avg_sse = avg_sse / cluster_groups.at( k - min_num_clusters ).size();
+            Eigen::Vector3d curr_offset( k, avg_sse, 0.0 );
+            double dist = line.distance( curr_offset );
+            if ( std::abs( dist ) > max_dist )
+            {
+                max_dist    = dist;
+                elbow_point = k;
+            }
+        }
+
+        return cluster_groups.at( elbow_point - min_num_clusters );
     }
 
     std::vector<cluster> k_means_cluster( const std::vector<Point2D>& points,
@@ -119,6 +171,39 @@ namespace clustering
         return clusters;
     }
 
+    double sum_of_squared_errors( const cluster& points )
+    {
+
+        if ( points.size() < 2 )
+        {
+            throw std::runtime_error(
+                "Cannot calculate the SSE of a cluster of less than 2 points" );
+        }
+
+        double mean = 0;
+        std::vector<double> distances;
+
+        for ( unsigned int i = 0; i < points.size(); ++i )
+        {
+            for ( unsigned int j = i + 1; j < points.size(); ++j )
+            {
+                double dist = ISC::geometry::distance( points.at( i ), points.at( j ) );
+                mean += dist;
+                distances.push_back( dist );
+            }
+        }
+
+        mean = mean / points.size();
+
+        double sum = 0;
+
+        for ( const auto& distance : distances )
+        {
+            sum += std::pow( distance - mean, 2 );
+        }
+
+        return sum;
+    }
 
 }  // namespace clustering
 }  // namespace ISC
