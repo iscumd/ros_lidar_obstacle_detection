@@ -12,6 +12,8 @@ addons:
 script:
  - cd lidar_obstacle_detection
  - ./.build.sh
- - ./../.cppcheck-all.sh
+ - cd ../
+ - ./.cppcheck-all.sh
+ - cd lidar_obstacle_detection
  - ./.run_tests.sh
 
