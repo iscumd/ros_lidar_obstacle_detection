@@ -8,9 +8,10 @@ addons:
      - ubuntu-toolchain-r-test
     packages:
      - libeigen3-dev
-
+     - cppcheck
 script:
  - cd lidar_obstacle_detection
  - ./.build.sh
+ - ./.cppcheck-all.sh
  - ./.run_tests.sh
 
