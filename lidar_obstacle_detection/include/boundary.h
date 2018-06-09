@@ -78,6 +78,18 @@ namespace geometry
         double m_x_dim;
         double m_y_dim;
     };
-}
-}
+
+    /**
+     * @brief Checks to see if a point is inside a rectangular boundary
+     * This is non inclusive. i.e. if a point lies on the bound of the boundary it will
+     * return false
+     * @param point coordinate to be checked against the boundary defined in bound
+     * @param bound boundary that confines the checked area
+     * @return true if the point lies inside the boundary, false if the point lies
+     * outside the boundary
+     */
+    bool isInside( const Point2D& point, const RectangleBoundary& bound );
+
+}  // namespace geometry
+}  // namespace ISC
 #endif

@@ -44,7 +44,7 @@ set(SRC_FILES
         src/obstacle.cpp
         src/point2d.cpp
         src/cluster.cpp
-        )
+        src/filter.cpp)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -111,7 +111,8 @@ install(
             include/boundary.h
             include/lidar_obstacle_detection.h
             include/obstacle.h
-            include/point2d.h# here
+            include/point2d.h
+            include/filter.h# here
         "${CMAKE_CURRENT_BINARY_DIR}/${Library_NAME}_export.h"
         DESTINATION
             include
