@@ -24,5 +24,5 @@ namespace filtering
         }
         return filtered;
     }
-}
-}
+}  // namespace filtering
+}  // namespace ISC

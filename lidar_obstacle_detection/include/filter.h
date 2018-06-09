@@ -16,7 +16,8 @@ namespace filtering
 {
     /**
      * @brief filter 2d points based on a rectangular boundary
-     * Boundary filter is NOT inclusive, i.e. points that lie on the boundary will not be included in the return
+     * Boundary filter is NOT inclusive, i.e. points that lie on the boundary will not be
+     * included in the return
      * @param bound boundary to filter points against
      * @param points points to be filtered
      * @return a vector of points that lie inside the boundary
