@@ -3,13 +3,17 @@
 //
 
 #include "point2d.h"
+#include "boundary.h"
 
 #include "catch.hpp"
 
 #include <cfloat>
+#include <algorithm>
 
 using ISC::geometry::Point2D;
+using ISC::geometry::RectangleBoundary;
 using ISC::geometry::distance;
+using ISC::geometry::isInside;
 
 TEST_CASE( "Point Constructor, regular input", "[constructor][regular_input]" )
 {
@@ -73,4 +77,37 @@ TEST_CASE( "Point approximately equals test", "[approximately_equals]" )
     Point2D p2( 10.0001, 10.0001 );
 
     REQUIRE( ISC::geometry::close_enough( p1, p2 ) );
+}
+
+TEST_CASE( "Rectangle Boundary Tests", "[constructor][rectangleBoundary]")
+{
+    SECTION("Constructor Test")
+    {
+        RectangleBoundary boundary(10, 20, {0,0});
+        REQUIRE(boundary.position() == Point2D(0,0));
+        REQUIRE(boundary.x_dim() == 10);
+        REQUIRE(boundary.y_dim() == 20);
+        REQUIRE(boundary.center() == Point2D(5, 10));
+    }
+    SECTION("Vertices Test")
+    {
+        RectangleBoundary boundary(10, 20, {0,0});
+        auto vertices = boundary.vertices();
+        REQUIRE(std::find(vertices.begin(), vertices.end(), Point2D(0,0)) != vertices.end());
+        REQUIRE(std::find(vertices.begin(), vertices.end(), Point2D(10,0)) != vertices.end());
+        REQUIRE(std::find(vertices.begin(), vertices.end(), Point2D(10,20)) != vertices.end());
+        REQUIRE(std::find(vertices.begin(), vertices.end(), Point2D(0,20)) != vertices.end());
+    }
+    SECTION("isInside function test")
+    {
+        RectangleBoundary boundary(10, 20, {0,0});
+        Point2D inner_point(5,10);
+        Point2D outer_point(30,30);
+        Point2D edge_point(10,5);
+        Point2D corner_point(10,20);
+        REQUIRE(isInside(inner_point, boundary));
+        REQUIRE_FALSE(isInside(outer_point, boundary));
+        REQUIRE_FALSE(isInside(edge_point, boundary));
+        REQUIRE_FALSE(isInside(corner_point, boundary));
+    }
 }
