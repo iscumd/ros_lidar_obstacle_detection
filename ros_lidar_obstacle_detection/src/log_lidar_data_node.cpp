@@ -37,19 +37,11 @@ void laserScanCallback( const sensor_msgs::LaserScan::ConstPtr& scannedData )
 
 int main( int argc, char** argv )
 {
-    //    ros::init(argc, argv, "obstacle_detection");
-    //    ros::NodeHandle n;
-    //
-    //    ros::Subscriber laserScanSubscriber = n.subscribe("sensor_msgs/LaserScan", 5,
-    //    laserScanCallback);
-    //    ros::Publisher obstaclesPublisher =
-    //    n.advertise<obstacle_detection::obstacles>("obstacle_detection/obstacles", 5);
-    //
-    //    n.param("obstacle_min_x_position", minObstacleXPosition, 0);
-    //    n.param("scan_start_index", start_index, 0);
-    //    n.param("scan_end_index", end_index, int((angle_max / angle_increment))); //
-    //    TODO: MIGHT BLOW HARD
-    //
-    //    ros::spin();
-    //    return 0;
+        ros::init(argc, argv, "obstacle_detection");
+        ros::NodeHandle n;
+
+        ros::Subscriber laserScanSubscriber = n.subscribe("sensor_msgs/LaserScan", 5, laserScanCallback);
+
+        ros::spin();
+        return 0;
 }
