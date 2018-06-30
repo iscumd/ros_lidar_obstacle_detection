@@ -59,7 +59,7 @@ namespace clustering
                                           const unsigned int& min_num_clusters,
                                           const unsigned int& max_num_clusters )
     {
-        std::vector<std::vector<cluster>> cluster_groups;
+        std::vector<std::vector<cluster> > cluster_groups;
         for ( unsigned int i = min_num_clusters; i <= max_num_clusters; ++i )
         {
             cluster_groups.push_back( k_means_cluster( points, i ) );

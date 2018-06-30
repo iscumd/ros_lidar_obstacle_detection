@@ -37,11 +37,12 @@ void laserScanCallback( const sensor_msgs::LaserScan::ConstPtr& scannedData )
 
 int main( int argc, char** argv )
 {
-        ros::init(argc, argv, "obstacle_detection");
-        ros::NodeHandle n;
+    ros::init( argc, argv, "obstacle_detection" );
+    ros::NodeHandle n;
 
-        ros::Subscriber laserScanSubscriber = n.subscribe("sensor_msgs/LaserScan", 5, laserScanCallback);
+    ros::Subscriber laserScanSubscriber
+        = n.subscribe( "sensor_msgs/LaserScan", 5, laserScanCallback );
 
-        ros::spin();
-        return 0;
+    ros::spin();
+    return 0;
 }

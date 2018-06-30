@@ -44,6 +44,7 @@ set(SRC_FILES
         src/obstacle.cpp
         src/point2d.cpp
         src/cluster.cpp
+        src/classification.cpp
         )
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

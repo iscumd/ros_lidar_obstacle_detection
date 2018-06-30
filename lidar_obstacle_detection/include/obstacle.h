@@ -23,6 +23,10 @@ namespace geometry
          * Near cylindrical obstacle, size represents diameter of the object
          */
         BARREL,
+        /**
+         * Flat Planar object, size represents width
+         */
+        PLANE,
         // Add new obstacle types here! Dont forget to add comments!
         UNKNOWN
     };
