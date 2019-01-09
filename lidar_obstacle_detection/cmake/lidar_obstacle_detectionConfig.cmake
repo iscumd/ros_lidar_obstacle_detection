@@ -1,1 +1,0 @@
-include(${CMAKE_CURRENT_LIST_FILE}/TemplatelibTargets.cmake)

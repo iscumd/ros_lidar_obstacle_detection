@@ -7,7 +7,7 @@
 #include "geometry_msgs/Point.h"
 #include "ros/ros.h"
 #include "sensor_msgs/LaserScan.h"
-
+#include "cluster.h"
 #include <vector>
 
 // LaserScan
@@ -52,4 +52,5 @@ int main( int argc, char** argv )
     //
     //    ros::spin();
     //    return 0;
+    ISC::geometry::Point2D x;
 }

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/aaron/yeti_ws/src/obstacle_detection/ros_lidar_obstacle_detection/cmake-build-debug/devel/setup.sh
