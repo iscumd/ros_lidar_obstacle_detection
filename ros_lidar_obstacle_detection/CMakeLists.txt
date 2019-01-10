@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
         geometry_msgs
         roscpp
         sensor_msgs
+        tf
         )
 find_package(lidar_obstacle_detection REQUIRED)
 
