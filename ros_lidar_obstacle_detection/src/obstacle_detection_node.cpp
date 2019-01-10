@@ -39,6 +39,8 @@ double filter_origin_y;
 int min_num_clusters;
 int max_num_clusters;
 
+tf::StampedTransform transform;
+
 ISC::geometry::Point2D polarToPoint2D(float range, float angle){
     return ISC::geometry::Point2D(range*cos(angle), range*sin(angle));
 }
@@ -62,15 +64,6 @@ void laserScanCallback( const sensor_msgs::LaserScan::ConstPtr& scannedData )
         end_index = int(angle_max / angle_increment);
     }
 
-    tf::TransformListener listener;
-    tf::StampedTransform transform;
-    try{
-      listener.lookupTransform("/map", "/sick_laser_link", ros::Time(0), transform);
-    }
-    catch (tf::TransformException ex){
-      ROS_ERROR("%s",ex.what());
-      return;
-    }
     tf::Matrix3x3 mat(transform.getRotation());
     double r,p,transformTheta;
     mat.getRPY(r,p,transformTheta);
@@ -93,22 +86,33 @@ int main( int argc, char** argv )
     ros::Subscriber laserScanSubscriber = n.subscribe("scan", 5, laserScanCallback);
     ros::Publisher obstaclesPublisher = n.advertise<visualization_msgs::MarkerArray>("obstacle_detection/obstacles", 5);
 
+    tf::TransformListener listener;
+    ros::Rate rate(10.0);
+
     // n.param("obstacle_min_x_position", minObstacleXPosition, 0);
     n.param("scan_start_index", start_index, 0);
     n.param("scan_end_index", end_index, -1);
-    n.param("filter_x_size", filter_x_size, 0.0);
-    n.param("filter_y_size", filter_y_size, 0.0);
-    n.param("filter_origin_x", filter_origin_x, 0.0);
-    n.param("filter_origin_y", filter_origin_y, 0.0);
+    n.param("filter_x_size", filter_x_size, 11.0);
+    n.param("filter_y_size", filter_y_size, 5.0);
+    n.param("filter_origin_x", filter_origin_x, -1.0);
+    n.param("filter_origin_y", filter_origin_y, -2.5);
     n.param("min_num_clusters", min_num_clusters, 3);
     n.param("max_num_clusters", max_num_clusters, 7);
 
     //make params for filter boundry and min and max clusters
 
-    ros::spin();
     while(n.ok()){
+        rate.sleep();
+        
+        try{
+            listener.lookupTransform("/map", "/sick_laser_link", ros::Time(0), transform);
+        }
+        catch (tf::TransformException ex){
+            ROS_ERROR("%s",ex.what());
+            continue;
+        }
         ros::spinOnce();
-        if(ranges.size() < 1){
+        if(points.size() < 1){
             continue;
         }
 
