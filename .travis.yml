@@ -10,10 +10,9 @@ addons:
      - libeigen3-dev
      - cppcheck
 script:
- - cd lidar_obstacle_detection
+ - cd ros_lidar_obstacle_detection/lib/lidar_obstacle_detection
  - ./.build.sh
- - cd ../
- - ./.cppcheck-all.sh
- - cd lidar_obstacle_detection
  - ./.run_tests.sh
+ - cd ../../..
+ - ./.cppcheck-all.sh
 
