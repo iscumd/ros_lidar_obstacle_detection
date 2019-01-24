@@ -68,6 +68,10 @@ namespace geometry
         {  // point is above the boundary
             return false;
         }
+        else if(std::isnan(point.get_x()) || std::isnan(point.get_x()))
+        {
+            return false;
+        }
         else
         {
             return true;  //  inside boundary

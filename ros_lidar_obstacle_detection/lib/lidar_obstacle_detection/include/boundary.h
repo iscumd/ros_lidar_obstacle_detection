@@ -4,6 +4,7 @@
 #include "point2d.h"
 
 #include <vector>
+#include <cmath>
 
 namespace ISC
 {
