@@ -184,8 +184,8 @@ int main( int argc, char** argv )
             continue;
         }
         std::vector<ISC::clustering::cluster> clusters;
-        clusters = ISC::clustering::k_means_cluster(filteredPoints, min_num_clusters, max_num_clusters);
-//        clusters = ISC::clustering::k_means_cluster(filteredPoints, 3);
+//        clusters = ISC::clustering::k_means_cluster(filteredPoints, min_num_clusters, max_num_clusters);
+        clusters = ISC::clustering::k_means_cluster(filteredPoints, 2);
         visualization_msgs::MarkerArray msg;
         for(int i = 0; i < clusters.size(); i++){
             if(clusters.at(i).size()<1){ continue;}
