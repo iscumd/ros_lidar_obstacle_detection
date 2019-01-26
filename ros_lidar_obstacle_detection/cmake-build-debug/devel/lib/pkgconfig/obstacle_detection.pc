@@ -1,8 +1,0 @@
-prefix=/home/aaron/yeti_ws/src/obstacle_detection/ros_lidar_obstacle_detection/cmake-build-debug/devel
-
-Name: obstacle_detection
-Description: Description of obstacle_detection
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/aaron/yeti_ws/src/obstacle_detection/ros_lidar_obstacle_detection/cmake-build-debug/devel/lib 
-Requires: 

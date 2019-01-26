@@ -105,7 +105,7 @@ namespace clustering
             avg_sse = avg_sse / cluster_groups.at( k - min_num_clusters ).size();
             Eigen::Vector3d curr_offset( k, avg_sse, 0.0 );
             double dist = line.distance( curr_offset );
-            if ( std::abs( dist ) > max_dist )
+            if ( std::fabs( dist ) > max_dist )
             {
                 max_dist    = dist;
                 elbow_point = k;
